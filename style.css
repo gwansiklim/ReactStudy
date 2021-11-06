@@ -1,0 +1,17 @@
+#today-work {
+    color: blue;
+    text-decoration: underline;
+    font-size: 60px;
+    margin: 1em;
+}
+
+.today-list {
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 2em;
+    margin: 2em;
+}
+
+button:hover {
+    background-color: orange;
+}
