@@ -4,12 +4,15 @@
     font-size: 60px;
     margin: 1em;
 }
+.wrap {
+    display: flex;
 
+}
 .today-list {
     border: 1px solid black;
     border-radius: 7px;
     padding: 2em;
-    margin: 2em;
+    margin: 1em;
 }
 
 button:hover {
