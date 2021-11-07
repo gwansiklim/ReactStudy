@@ -1,0 +1,21 @@
+#wrap {
+    display: flex;
+    align-items: center;
+}
+h1 {
+    color: green;
+    text-decoration: underline;
+}
+button {
+    width: 100px;
+}
+button:hover {
+    color: white;
+    background-color: purple;
+}
+.card_list {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 2em;
+    margin: 1em;
+}

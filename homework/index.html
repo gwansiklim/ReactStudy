@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home Work!</title>
+</head>
+
+<body>
+    <h1>오늘의 할일</h1>
+    <div id="wrap">
+        <div class="card">
+
+        </div>
+
+        <div class="add">
+            <input id="add_input" />
+            <button onclick="add_card()">추가하기</button>
+        </div>
+    </div>
+
+    <script>
+        function complateCard(e) {
+            console.log("완료!");
+            console.log(e.target);
+            console.log(e.target.parentElement);
+            e.target.parentElement.style.backgroundColor = "green";
+        }
+
+        function add_card() {
+            const new_card = document.createElement("div");
+            new_card.className = "card_list";
+
+            const title = document.createElement("h3");
+            title.textContent = document.getElementById("add_input").value;
+            const button = document.createElement("button");
+            button.textContent = "완료하기";
+            button.addEventListener("click", complateCard);
+
+            new_card.appendChild(title);
+            new_card.appendChild(button);
+            document.getElementsByClassName("card")[0].appendChild(new_card);
+        }
+    </script>
+
+</body>
+
+</html>

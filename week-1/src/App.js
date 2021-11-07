@@ -3,22 +3,23 @@ import React from 'react';
 import './App.css';
 
 function App() {
+    const styles = {
+        border: "1px solid gray",
+        borderRadius: "20px",
+        padding: "20px",
+        width: "300px",
+        margin: "30px auto"
+    };
+
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-        </a>
-            </header>
+            <div style={styles}>
+                <h1 style={{ color: "green" }}>안녕하세요!</h1>
+                <hr />
+                <p style={{ textAlign: "left" }}>이름을 입력해주세요.</p>
+                <input type="text" style={{ width: "80%" }} />
+            </div>
+
         </div>
     );
 }
