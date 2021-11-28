@@ -9,7 +9,7 @@ function App() {
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
                     임관식
-        </p>
+                </p>
                 <a
                     className="App-link"
                     href="https://reactjs.org"
