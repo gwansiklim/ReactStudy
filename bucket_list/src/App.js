@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 
 import BucketList from './BucketList';
 
@@ -16,6 +17,7 @@ class App extends React.Component {
         console.log(this.state.list);
         return (
             <div className="App">
+                <h1>나의 버킷리스트</h1>
                 <BucketList list={this.state.list} />
             </div>
         )
