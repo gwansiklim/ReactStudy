@@ -18,17 +18,11 @@ class App extends React.Component {
         console.log(this.state.list);
         return (
             <div className="App">
-                <MyStyled>
-                    <p>
-                        im here!!!!!
-                    </p>
-
-                </MyStyled>
-                {/* <div className="container">
-                    <h1>나의 버킷리스트</h1>
-                    <hr className="line" />
+                <Container>
+                    <Title>나의 버킷리스트</Title>
+                    <Line />
                     <BucketList list={this.state.list} />
-                </div> */}
+                </Container>
             </div>
         )
     }
@@ -44,20 +38,23 @@ class App extends React.Component {
 //     );
 // }
 
-
-const MyStyled = styled.div`
+const Container = styled.div`
+    background-color: #fff;
     width: 50vw;
-    height: 150px;
-    background-color: ${(props) => (props.bg_color ? "red" : "purple")};
-    p {
-        color: blue; 
-        &:hover {
-            color: red;
-        }
-    }
-    &:hover {
-        background-color: yellow;
-    }
+    max-width: 350px;
+    margin: auto;
+    height: 80vh;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+`;
+const Title = styled.h1`
+    color: slateblue;
+    text-align: center;
+`;
+
+const Line = styled.hr`
+    margin: 16px 0px;
 `;
 
 export default App;
