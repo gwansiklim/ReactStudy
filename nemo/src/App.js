@@ -17,6 +17,8 @@ class App extends React.Component {
     removeNemo = () => {
         if (this.state.count > 0) {
             this.setState({ count: this.state.count - 1 })
+        } else {
+            window.alert("네모가 없어요!")
         }
 
     }
