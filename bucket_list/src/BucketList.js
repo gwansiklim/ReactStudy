@@ -1,12 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
+// 함수형 콤포넌트 사용방법
 const BucketList = ({ list }) => {
     const my_lists = list;
     const my_wrap = React.useRef(null);
 
-    console.log(my_wrap);
+
+    window.setTimeout(() => {
+        console.log(my_wrap);
+    }, 1000);
     return (
         <div ref={my_wrap}>
             {

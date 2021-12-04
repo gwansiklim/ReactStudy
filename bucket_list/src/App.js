@@ -4,7 +4,7 @@ import './style.css';
 import styled from 'styled-components';
 
 
-// 클래스형 컴포넌트
+// 클래스형 컴포넌트 사용방법
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +13,7 @@ class App extends React.Component {
             list: ["넷플릭스 보기", "헬스장 가기", "스키장 가기"],
         }
 
-        this.text = React.createRef();
+        this.text = React.createRef(); //ref를 만드는 명령어
     }
 
     componentDidMount() {

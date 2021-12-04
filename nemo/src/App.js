@@ -1,4 +1,5 @@
 import React from 'react';
+import Nemo from './Nemo';
 
 class App extends React.Component {
     constructor(props) {
@@ -24,31 +25,10 @@ class App extends React.Component {
     }
 
     render() {
-        const nemo_count = Array.from({ length: this.state.count }, (v, i) => i);
-
-        console.log(this.state);
         return (
             <div className="App">
-                {nemo_count.map((n, i) => {
-                    return (
-                        <div
-                            key={i}
-                            style={{
-                                width: "150px",
-                                height: "150px",
-                                backgroundColor: "#ddd",
-                                margin: "10px",
-                            }}>
-                            nemo
-                        </div>
-                    )
-                }
-                )}
+                <Nemo />
 
-                <div>
-                    <button onClick={this.addNemo}>추가하기</button>
-                    <button onClick={this.removeNemo}>지우기</button>
-                </div>
             </div>
         )
     }
