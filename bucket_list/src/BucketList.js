@@ -7,9 +7,9 @@ const BucketList = ({ list }) => {
     const my_wrap = React.useRef(null);
 
 
-    window.setTimeout(() => {
-        console.log(my_wrap);
-    }, 1000);
+    // window.setTimeout(() => {
+    //     console.log(my_wrap);
+    // }, 1000);
     return (
         <div ref={my_wrap}>
             {
