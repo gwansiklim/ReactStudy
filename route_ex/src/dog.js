@@ -7,9 +7,7 @@ const Dog = (props) => {
     return (
         <div onClick={() => {
             history.push("/cat")
-
         }} style={{ cursor: "pointer" }}>
-
             강아지 화면입니다.
         </div>
     )
