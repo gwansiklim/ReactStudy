@@ -9,6 +9,7 @@ const initilaState = {
 
 // Action Creators
 export function createBucket(bucket) {
+    console.log("액션 생성!");
     return { type: CREATE, bucket: bucket };
 }
 
@@ -17,6 +18,7 @@ export function createBucket(bucket) {
 export default function reducer(state = initilaState, action = {}) {
     switch (action.type) {
         case "bucket/CREATE": {
+            console.log("값 바꾸기!");
             const new_bucket_list = [...state.list, action.bucket];
             return { list: new_bucket_list };
         }
