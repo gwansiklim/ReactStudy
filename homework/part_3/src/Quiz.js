@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dam from './mypet.png';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAnswer } from "./redux/modules/quiz";
 
 const Quiz = (props) => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const quiz_list = useSelector(state => state.quiz.quiz_list);
+    const user_answer_list = useSelector(state => state.quiz.user_answer_list);
 
-    //문제 만들기
-    const quiz_list = [
-        { question: "담이는 1살이다", answer: true, },
-        { question: "담이는 2살이다", answer: false },
-        { question: "담이는 3살이다", answer: false, }
-    ];
+    //문제 만들기 - 리덕스 만들기 전
+    // const quiz_list = [
+    //     { question: "담이는 1살이다", answer: true, },
+    //     { question: "담이는 2살이다", answer: false },
+    //     { question: "담이는 3살이다", answer: false, }
+    // ];
 
-    //user_answer_list는 질문 번호, setAnswerList는 변화할 때(고칠 떄) 사용 React.useState([])초기값을 빈배열로 준다.
-    const [user_answer_list, setAnswerList] = React.useState([]);
+    //user_answer_list는 질문 번호, setAnswerList는 변화할 때(고칠 떄) 사용 React.useState([])초기값을 빈배열로 준다. -리덕스 만들기 전
+    // const [user_answer_list, setAnswerList] = React.useState([]);
+
 
     // O,X를 클릭 시 이벤트 발생
     const setAnswer = (user_answer) => {
-        console.log(user_answer);
-        setAnswerList([...user_answer_list, user_answer]);
+        dispatch(addAnswer(user_answer));
+        // 리덕스 만들기 전
+        // setAnswerList([...user_answer_list, user_answer]); 
         // history.push("/score") //score로 경로 이동
     };
 
@@ -28,13 +35,13 @@ const Quiz = (props) => {
     React.useEffect(() => {
         if (user_answer_list.length === quiz_list.length) {
 
-            const _score = (100 / quiz_list.length) * quiz_list.filter((q, idx) => {
-                return q.answer === user_answer_list[idx];
-            }).length;
+            // const _score = (100 / quiz_list.length) * quiz_list.filter((q, idx) => {
+            //     return q.answer === user_answer_list[idx];
+            // }).length;
 
-            // 질문 평균 점수 구하기!
-            const score = Math.round(_score);
-            console.log(_score, score);
+            // // 질문 평균 점수 구하기!
+            // const score = Math.round(_score);
+            // console.log(_score, score);
             history.push("/score");
             return;
         }

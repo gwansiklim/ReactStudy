@@ -2,9 +2,13 @@
 import React from 'react';
 import img from './mypet.png';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setName } from './redux/modules/user';
 
 const Start = (props) => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const name_ref = React.useRef(null);
 
     return (
         <div style={{
@@ -20,6 +24,7 @@ const Start = (props) => {
                 width: "50vw",
                 margin: "16px",
             }} />
+
             <h1 style={{ fontSize: "1.5em", lineHeight: "1.5" }}>
                 나는 <span style={{
                     backgroundColor: "#fef5d4",
@@ -27,13 +32,17 @@ const Start = (props) => {
                     borderRadius: "30px",
                 }}>{props.name}</span> 대해 얼마나 알고 있을까?
                 </h1>
-            <input style={{
-                border: "1px solid #dadafc",
-                borderRadius: "30px",
-                padding: "10px",
-                width: "100%",
-            }} />
+
+            <input ref={name_ref}
+                style={{
+                    border: "1px solid #dadafc",
+                    borderRadius: "30px",
+                    padding: "10px",
+                    width: "100%",
+                }} />
+
             <button onClick={() => {
+                dispatch(setName(name_ref.current.value));
                 history.push("/quiz");
             }} style={{
                 padding: "10px 36px",
@@ -42,6 +51,7 @@ const Start = (props) => {
                 borderRadius: "30px",
                 margin: "36px 0px",
             }}>시작하기</button>
+
         </div>
     );
 }
