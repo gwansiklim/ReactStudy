@@ -9,6 +9,7 @@ import { createBucket } from './redux/modules/bucaket';
 import BucketList from "./BucketList";
 import Detail from './Detail';
 import NotFound from './NotFound';
+import Progress from './Progress';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <div className="App">
             <Container>
                 <Title>내 버킷리스트</Title>
+                <Progress />
                 <Line />
                 {/* 컴포넌트를 넣어줍니다. */}
                 {/* <컴포넌트 명 [props 명]={넘겨줄 것(리스트, 문자열, 숫자, ...)}/> */}

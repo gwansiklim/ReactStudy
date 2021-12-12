@@ -2,7 +2,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteBucket } from './redux/modules/bucaket';
+import { deleteBucket, updateBucket } from './redux/modules/bucaket';
 import { useHistory } from 'react-router-dom';
 
 const Detail = (props) => {
@@ -14,7 +14,10 @@ const Detail = (props) => {
 
     return (
         <div>
-            <h1>{bucket_list[bucket_index]}</h1>
+            <h1>{bucket_list[bucket_index].text}</h1>
+            <button onClick={() => {
+                dispatch(updateBucket(bucket_index));
+            }}>완료하기</button>
             <button onClick={() => {
                 dispatch(deleteBucket(bucket_index));
                 history.goBack();

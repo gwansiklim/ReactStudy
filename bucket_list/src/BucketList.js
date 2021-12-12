@@ -14,10 +14,10 @@ const BucketList = (props) => {
         <ListStyle>
             {my_lists.map((list, index) => {
                 return (
-                    <ItemStyle className="list_item" key={index} onClick={() => {
+                    <ItemStyle completed={list.completed} className="list_item" key={index} onClick={() => {
                         history.push("/detail/" + index); // 디테일주소에 paramse 붙이기
                     }}>
-                        {list}
+                        {list.text}
                     </ItemStyle>
                 );
             })}
@@ -36,7 +36,7 @@ overflow-y: auto;
 const ItemStyle = styled.div`
 padding: 16px;
 margin: 8px;
-background-color: aliceblue;
+background-color: ${(props) => props.completed ? "orange" : "aliceblue"};
 `;
 
 export default BucketList;
