@@ -22,7 +22,7 @@ function App() {
         // 원본 배열 list에 새로운 요소를 추가해주었습니다.
         // setList([...list, text.current.value]);
 
-        dispatch(createBucket(text.current.value));
+        dispatch(createBucket({ text: text.current.value, completed: false }));
     }
     return (
         <div className="App">
@@ -49,6 +49,9 @@ function App() {
                 <input type="text" ref={text} />
                 <button onClick={addBucketList}>추가하기</button>
             </Input>
+            <button onClick={() => {
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }}>위로 가기</button>
         </div>
     );
 }
