@@ -64,6 +64,29 @@ padding: 16px;
 margin: 20px auto;
 border-radius: 5px;
 border: 1px solid #ddd;
+display: flex;
+& > * {
+    padding: 5px;
+}
+& input {
+    border: 1px solid #888;
+    width: 70%;
+    height: 20px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+& input:focus {
+    outline: none;
+    border: 1px solid #a673ff;
+}
+& button {
+    width: 25%;
+    height: 32px;
+    color: #fff;
+    border: #a673ff;
+    background: #a673ff;
+    margin-top: 20px;
+}
 `;
 
 const Container = styled.div`
