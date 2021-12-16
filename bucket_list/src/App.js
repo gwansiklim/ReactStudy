@@ -10,12 +10,45 @@ import BucketList from "./BucketList";
 import Detail from './Detail';
 import NotFound from './NotFound';
 import Progress from './Progress';
+import { db } from './firebase';
+import { collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc } from "firebase/firestore";
 
 function App() {
 
     const [list, setList] = React.useState(["영화관 가기", "매일 책읽기", "수영 배우기"]);
     const text = React.useRef(null);
     const dispatch = useDispatch();
+
+    // db정보 불러오기!
+    // React.useEffect(async () => {
+    //     console.log(db)
+    //     const query = await getDocs(collection(db, "bucket"));
+    //     console.log(query);
+    //     query.forEach((doc) => {
+    //         console.log(doc.id, doc.data());
+    //     });
+    // }, []);
+
+    // db에 추가하기!
+    React.useEffect(async () => {
+        addDoc(collection(db, "bucket"), { text: "new", completed: false });
+    }, []);
+    //새로운 컬렉션 만들기(?)
+    React.useEffect(async () => {
+        addDoc(collection(db, "buckets"), { text: "new", completed: false });
+    }, []);
+
+    // 수정하기.
+    // React.useEffect(async () => {
+    //     const docRef = doc(db, "bucket", "koDXiETBxZ6N0RdejLIb");
+    //     updateDoc(docRef, { completed: true });
+    // }, []);
+
+    // 삭제하기
+    // React.useEffect(async () => {
+    //     const docRef = doc(db, "bucket", "sBPji5izf2gc0aJG5Juz");
+    //     deleteDoc(docRef);
+    // }, []);
 
     const addBucketList = () => {
         // 스프레드 문법! 기억하고 계신가요? :) 
