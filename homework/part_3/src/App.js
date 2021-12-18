@@ -5,6 +5,8 @@ import { Route } from 'react-router-dom';
 import Start from './Start';
 import Quiz from './Quiz';
 import Score from './Score';
+import Message from './Message';
+import Ranking from './Ranking';
 
 
 function App() {
@@ -24,6 +26,12 @@ function App() {
             </Route>
             <Route path="/score" exact>
                 <Score name={name} />
+            </Route>
+            <Route path="/message" exact>
+                <Message />
+            </Route>
+            <Route path="/ranking" exact>
+                <Ranking />
             </Route>
         </div>
     );
