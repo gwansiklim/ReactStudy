@@ -5,6 +5,9 @@ import dam from './mypet.png';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { db } from './firebase';
+import { collection, addDoc } from 'firebase/firestore';
+
 import { setMessage } from './redux/modules/user'
 import { addRank } from './redux/modules/ranking';
 
@@ -30,12 +33,16 @@ const Message = (props) => {
             <img src={dam} />
             <h3>{quiz_name}에게 남기는 한마디</h3>
             <input ref={message_ref} />
-            <button onClick={() => {
-                dispatch(setMessage(message_ref.current.value));
-                dispatch(addRank({ score: score, user_name: user_name, message: message_ref.current.value, }));
+            <button
+                onClick={async () => {
+                    dispatch(setMessage(message_ref.current.value));
+                    dispatch(addRank({ score: score, user_name: user_name, message: message_ref.current.value, }));
 
-                history.push('/ranking');
-            }}>남기고 랭킹 보러가기</button>
+                    const docRef = await addDoc(collection(db, "ranking"), {
+                        score: score, user_name: user_name, message: message_ref.current.value,
+                    });
+                    history.push('/ranking');
+                }}>남기고 랭킹 보러가기</button>
         </div>
     )
 }
