@@ -3,6 +3,7 @@ import dam from './mypet.png';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addAnswer } from "./redux/modules/quiz";
+import Progress from './Progress';
 
 const Quiz = (props) => {
     const history = useHistory();
@@ -53,6 +54,7 @@ const Quiz = (props) => {
 
     return (
         <div>
+            <Progress />
             <p>{user_answer_list.length + 1}번 문제</p>
             <h3>{quiz_list[user_answer_list.length].question}</h3>  {/* 질문마다 quiz_list에서 question만 가져온다 */}
 
