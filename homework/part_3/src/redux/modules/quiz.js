@@ -10,6 +10,7 @@ export const addAnswer = (user_answer) => {
 }
 
 const initialState = {
+    quiz_name: "도담이",
     quiz_list: [
         { question: "담이는 1살이다", answer: true, },
         { question: "담이는 2살이다", answer: false },

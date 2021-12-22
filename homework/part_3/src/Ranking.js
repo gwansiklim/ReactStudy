@@ -1,17 +1,11 @@
 // 랭킹 하기 페이지
 import React from 'react';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Ranking = (props) => {
     const history = useHistory();
-    const _user_data = [
-        { score: 40, user_name: "임관식1", message: "담아 안녕!!" },
-        { score: 80, user_name: "임관식2", message: "담아 안녕!!" },
-        { score: 60, user_name: "임관식3", message: "담아 안녕!!" },
-
-    ];
-
+    const _user_data = useSelector(state => state.ranking.ranking);
     const user_data = _user_data.sort((a, b) => {
         return b.score - a.score;
     });
@@ -26,7 +20,7 @@ const Ranking = (props) => {
                 padding: "16px",
                 background: "#fff"
             }}>
-                ㅁㅁㅁㅁ 명의 사람들 중에서 당신은?
+                {user_data.length} 명의 사람들 중에서 당신은?
             </div>
             <div style={{ margin: "10vh 0vh" }}>
                 {user_data.map((u, idx) => {

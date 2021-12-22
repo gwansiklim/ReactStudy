@@ -2,13 +2,14 @@
 import React from 'react';
 import img from './mypet.png';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setName } from './redux/modules/user';
 
 const Start = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const name_ref = React.useRef(null);
+    const quiz_name = useSelector(state => state.quiz.quiz_name);
 
     return (
         <div style={{
@@ -30,7 +31,7 @@ const Start = (props) => {
                     backgroundColor: "#fef5d4",
                     padding: "5px 10px",
                     borderRadius: "30px",
-                }}>{props.name}</span> 대해 얼마나 알고 있을까?
+                }}>{quiz_name}</span> 대해 얼마나 알고 있을까?
                 </h1>
 
             <input ref={name_ref}
