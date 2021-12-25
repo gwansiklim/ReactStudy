@@ -11,14 +11,9 @@ const DELETE = 'bucket/DELETE';
 
 //리덕스에 정보 저장 - 기본적으로 가지고 있을 값
 const initilaState = {
-  list: [
-    { text: "영화관 가기", completed: false },
-    { text: "매일 책읽기", completed: false },
-    { text: "수영 배우기", completed: false },
-    { text: "코딩하기", completed: false },
-  ]
+  list: [],
   // list: ["영화관 가기", "매일 책읽기", "수영 배우기", "코딩하기"],
-}
+};
 
 // Action Creators - 정보 생성
 export function loadBucket(bucket_list) {
@@ -48,21 +43,32 @@ export const loadBucketFB = () => {
 
     // getDocs는 데이터를 전부 가져온다.
     const bucket_data = await getDocs(collection(db, "bucket")); //어떤 collection에서 가져오는지. 인자로는 db(firebase.js에서 만든 것)
-    console.log(bucket_data);
 
-    let bucket_list = [];
+    let bucket_list = []; //빈 배열로 만든다.
 
     bucket_data.forEach((b) => {
-      console.log(b.data());
-      bucket_list.push({ ...b.data() });
+      bucket_list.push({ id: b.id, ...b.data() });
     });
-
-    console.log(bucket_list);
 
     dispatch(loadBucket(bucket_list)); //버킷리스트 수정 요청
   }
 }
 
+export const addBucketFB = (bucket) => {
+  return async function (dispatch) {
+    const docRef = await addDoc(collection(db, "bucket"), bucket);
+    const bucket_data = { id: docRef.id, ...bucket }
+
+    dispatch(createBucket(bucket_data));
+
+  }
+}
+
+export const updateBucketFB = (bucket_id) => {
+  return function (dispatch) {
+
+  }
+}
 
 // Reducer - state에 정보를 바꿔 주는 역할
 export default function reducer(state = initilaState, action = {}) {
