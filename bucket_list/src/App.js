@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { createBucket } from './redux/modules/bucaket';
+import { createBucket, loadBucketFB } from './redux/modules/bucaket';
 
 // BucketList 컴포넌트를 import 해옵니다.
 // import [컴포넌트 명] from [컴포넌트가 있는 파일경로];
@@ -18,6 +18,10 @@ function App() {
     const [list, setList] = React.useState(["영화관 가기", "매일 책읽기", "수영 배우기"]);
     const text = React.useRef(null);
     const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(loadBucketFB());
+    }, []);
 
     // db정보 불러오기!
     // React.useEffect(async () => {
